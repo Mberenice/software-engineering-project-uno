@@ -28,6 +28,21 @@ public class Client {
         // For the sake of simulation, let's assume login is always successful
         return true;
     }
-	//trial
-
+    public boolean receiveAccountCreationResponse() {
+        // Simulate receiving the response from the server for account creation
+        return true; 
+    }
+    
+    public Object receiveGameState() {
+        // Simulate receiving a game state update from the server
+        Object gameState = "Current game state data";
+        return gameState;
+    }
+    
+    public Object receiveLobbyStatus() {
+        // Simulate receiving a lobby status update from the server
+        Object lobbyStatus = "Lobby status data";  
+        return lobbyStatus;
+    }
+   
 }

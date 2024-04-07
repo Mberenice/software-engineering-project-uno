@@ -9,22 +9,14 @@ public StartUpControl(Client client) {
 }
 
 //function to create a login request
-public boolean login(String username, String password)
-{
-	// Create a login request
-	LoginControl loginControl = new LoginControl(username, password);
-	 
-	//send the create account request to the Server
-	 client.sendRequest(loginControl);
-	 
-	 // Receive and process the response from the server
-	 boolean loginSuccessful = client.receiveLoginResponse(); 
-			 
-	    // Handle the login response
-			 handleLoginResponse(loginSuccessful);
-     
-               return loginSuccessful;
+public boolean login(String username, String password) {
+    LoginControl loginControl = new LoginControl(client, username, password);
+    client.sendRequest(loginControl);
+    boolean loginSuccessful = client.receiveLoginResponse();
+    handleLoginResponse(loginSuccessful);
+    return loginSuccessful;
 }
+
        private void handleLoginResponse(boolean loginSuccessful) {
           if (loginSuccessful) {
           // Handle successful login

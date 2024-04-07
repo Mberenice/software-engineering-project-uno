@@ -1,13 +1,21 @@
 package ClientCommunication;
 
 public class LoginControl {
-	private String username;
-	private String password;
-	
-	// Constructor for LoginControl class
-    // Initializes the username and password fields
-	public LoginControl(String username, String password) {
+    private Client client;
+    private String username;
+    private String password;
+
+    // Constructor
+    public LoginControl(Client client, String username, String password) {
+        this.client = client;
         this.username = username;
         this.password = password;
     }
+
+    public boolean login() {
+        Object loginRequest = "LOGIN:" + username + ":" + password;
+        client.sendRequest(loginRequest);
+        return client.receiveLoginResponse();
+    }
 }
+
